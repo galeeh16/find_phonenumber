@@ -43,3 +43,8 @@ html, body {
 .search::placeholder {
   color: #d0cddd;
 }
+
+#phone_number:disabled {
+  color: #a5adbd;
+  background-color: #9895c5;
+}

@@ -10,7 +10,7 @@
                     <form action="/findphone" method="post" id="form" class="px-4 pt-4">
                         @csrf
                         <div class="form-group input-group shadow-lg">
-                            <input type="text" class="form-control form-control-lg search" placeholder="Find Phonenumber..." name="phone_number" id="phone_number">
+                            <input type="text" class="form-control form-control-lg search disabled" placeholder="Find Phonenumber..." name="phone_number" id="phone_number">
                             <div class="input-group-append">
                                 <button class="btn btn-lg btn-danger" type="submit" id="btn-search"><i class="fa fa-search" id="fa"></i> Search</button>
                             </div>
@@ -34,6 +34,16 @@
 @section('script')
 <script>
     $(document).ready(function() {
+
+        // Make input only number 
+        $('#phone_number').on('keydown', function(e)  {
+          -1!==$
+            .inArray(e.keyCode,[46,8,9,27,13,110,190]) || /65|67|86|88/
+            .test(e.keyCode) && (!0 === e.ctrlKey || !0 === e.metaKey)
+            || 35 <= e.keyCode && 40 >= e.keyCode || (e.shiftKey|| 48 > e.keyCode || 57 < e.keyCode)
+            && (96 > e.keyCode || 105 < e.keyCode) && e.preventDefault()
+        });
+
         // Form on submit event 
         $('#form').on('submit', function(e) {
             e.preventDefault();
@@ -46,16 +56,19 @@
                     $('#fa').removeClass('fa fa-search');
                     $('#fa').addClass('fa fa-spinner fa-spin');
                     $('#btn-search').prop('disabled', true);
+                    $('#phone_number').prop('disabled', true);
+                    $('.card').html('');
                 },
                 complete: function() {
                     $('#fa').removeClass('fa fa-spinner fa-spin');
                     $('#fa').addClass('fa fa-search');
                     $('#btn-search').prop('disabled', false);
+                    $('#phone_number').prop('disabled', false);
                 },
                 success: function(response) {
-                    $('#fa').removeClass('fa fa-spinner fa-spin');
-                    $('#fa').addClass('fa fa-search');
-                    $('#btn-search').prop('disabled', false);
+                    // $('#fa').removeClass('fa fa-spinner fa-spin');
+                    // $('#fa').addClass('fa fa-search');
+                    // $('#btn-search').prop('disabled', false);
                     // console.log(response.data.tasks.account_holder);
                     // if(response.status == true) {
                         $('.card').html(`

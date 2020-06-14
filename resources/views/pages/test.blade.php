@@ -77,7 +77,7 @@
                                     <h3 class="m-0 card-title">Result</h3>
                                 </div>
                                 <div class="card-body">
-                                    <p>NAMA ACCOUNT : <b class="text-uppercase">${response.status == true ? response.tasks.account_holder : response.data.tasks.account_holder}</b></p>
+                                    <p>NAMA ACCOUNT : <b class="text-uppercase">${response.status == true ? response.tasks.account_holder : 'Data tidak ditemukan!' }</b></p>
                                 </div>
                             `);
                         // }

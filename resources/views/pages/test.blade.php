@@ -10,7 +10,7 @@
                     <form action="/findphone" method="post" id="form" class="px-4 pt-4">
                         @csrf
                         <div class="form-group input-group shadow-lg">
-                            <input type="tel" class="form-control form-control-lg search disabled" placeholder="Enter phone number..." name="phone_number" id="phone_number" maxlength="16">
+                            <input type="number" pattern="[0-9]" class="form-control form-control-lg search disabled" placeholder="Enter phone number..." name="phone_number" id="phone_number" maxlength="16">
                             <div class="input-group-append">
                                 <button class="btn btn-lg btn-danger" type="submit" id="btn-search"><i class="fa fa-search" id="fa"></i> Search</button>
                             </div>
